@@ -2,15 +2,15 @@
 
 A Mac app for sharing photos, calendars, collection day and weather with a household display. Choose what to share on your Mac, then pair an Android frame or browser using eight numbers: `1234-5678`.
 
+![Native Android frame showing fictional photos, family calendar, collection day and weather](docs/android-frame.png)
+
+*The native Android display. Photos, plans and the forecast together, with no browser required.*
+
 > **Vibe-coded / experimental software**
 >
 > Built with substantial AI-assisted coding. This is a personal open-source spike, not a professionally audited or production-hardened product. Tests and demo checks do not guarantee correctness, privacy or security. Review the code before granting library access, start with the fictional demo, and use a trusted local network. Do not rely on it for critical reminders or expose the server to the internet. Provided **as is, without warranty**, under the MIT licence.
 
 **Photos and Calendar require an awake, running Mac with HomeControl open, the relevant permissions granted, and sharing enabled.** The frame does not connect directly to iCloud. Locking the Mac is fine while it stays awake; sleep, shutdown or quitting HomeControl interrupts library updates. If you leave only the server running, the last Photos/Calendar export expires after ten minutes. A disconnected Android frame can retain cached content locally; this is not remote erasure.
-
-![Browser frame with fictional content](docs/frame.png)
-
-[See the Mac demo screenshots](docs/screenshots/README.md), including inline calendars, photo settings, collection schedules, weather and shared colours.
 
 ## What it does
 
@@ -21,6 +21,10 @@ A Mac app for sharing photos, calendars, collection day and weather with a house
 - **Pairing:** one-use codes in `1234-5678` format, valid for ten minutes. Frames store the longer session credential internally.
 
 No camera, plant-care or home-automation integrations are included. The original blue HomeControl house/switch icon and menu-bar artwork are preserved.
+
+![Choose and arrange photos in the Mac companion](docs/screenshots/02-mac-photos.png)
+
+*Manage shared photos and slideshow settings on the Mac.*
 
 ## Separate packages, one repository
 
@@ -73,6 +77,19 @@ open "macos/dist/HomeControl Open Source.app"
 5. Open **Settings** for the frame address and pairing code. Local-network access starts automatically. Allow the local network connection if macOS asks. Use only a trusted network.
 6. Install the native [Android frame](frame-android/README.md), then select the Mac it discovers and enter the code. Use the manual address option if discovery is blocked. Alternatively open the address in a browser and enter the code. **Frame Preview** on the Mac uses the browser package directly.
 
+![Inline calendar selection with per-calendar colours and family member labels](docs/screenshots/01-mac-calendars.png)
+
+*Choose several calendars, give each a colour, and optionally show a name beside event times.*
+
+<details>
+<summary>Collection day and weather settings</summary>
+
+![Repeating collection schedule in the Mac app](docs/screenshots/03-mac-collection.png)
+
+![Weather location and units configured on the Mac](docs/screenshots/04-mac-weather.png)
+
+</details>
+
 Settings shows the Mac's `.local` hostname on port 8797. The Mac preview also works at `http://127.0.0.1:8797`. Guest networks may prevent devices reaching one another. Pairing codes expire and work once; choose **New Code** for each additional frame.
 
 ### Quitting and reopening
@@ -101,6 +118,12 @@ HOMECONTROL_DEMO=1 HOMECONTROL_DATA_DIR="$PWD/server/data/demo" \
 ```
 
 Demo mode deliberately does not request library permissions or start another server. Weather's Search still sends the entered search to Open-Meteo. Quit and open the app normally to use your own libraries.
+
+![The web frame running inside the Mac companion preview](docs/screenshots/06-mac-frame-preview.png)
+
+*The Mac preview reuses the optional browser client. Android uses its own native interface.*
+
+[Browse all Mac demo screenshots](docs/screenshots/README.md) or view the [standalone browser display](docs/frame.png). All published captures use fictional content.
 
 ![Browser pairing](docs/pairing.png)
 
@@ -197,6 +220,10 @@ Select multiple calendars directly on the **Calendar** page. Each selected calen
 HomeControl runs in the menu bar. Open Settings to show its window and Dock icon; closing the window hides the Dock icon and keeps sharing and the server running. Quit is a separate action.
 
 On Calendar, the calendar list is always visible beside the preview. Select multiple calendars, choose their colours, and optionally label them with family members’ names. In Settings → Frame appearance, choose a Tailwind swatch or use the native macOS colour picker. The shared accent reaches Android and web displays within a few seconds.
+
+![Shared accent swatches, custom colour and frame update controls](docs/screenshots/05-mac-appearance.png)
+
+*One accent for every connected frame, managed on the Mac.*
 
 The Android pairing screen discovers compatible Macs over Bonjour on the same Wi-Fi. Select the Mac and enter its eight-digit code. A manual address remains available for networks that block discovery. The web frame is reached at the Mac’s address; browsers do not provide native Bonjour discovery.
 
