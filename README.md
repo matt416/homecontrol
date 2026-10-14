@@ -1,5 +1,9 @@
 # HomeControl
 
+> **Vibe-coded / experimental software**
+>
+> Built with substantial AI-assisted coding. This is a personal open-source spike, not a professionally audited or production-hardened product. Tests and demo checks do not guarantee correctness, privacy or security. Review the code before granting library access, start with the fictional demo, and use a trusted local network. Do not rely on it for critical reminders or expose the server to the internet. Provided **as is, without warranty**, under the MIT licence.
+
 A Mac app for sharing photos, calendars, collection day and weather with a household display. Choose what to share on your Mac, then pair a native Android frame or browser using eight numbers: `1234-5678`.
 
 > **Agents: start with [AGENTS.md](AGENTS.md), then follow [docs/AGENT-SETUP.md](docs/AGENT-SETUP.md) for installation, automatic startup, kiosk setup and updates.**
@@ -29,10 +33,6 @@ Prefer to follow along yourself? [Requirements](#before-you-start) · [Demo](#tr
 Keep the iPhone/iPad contributing photos and the serving Mac up to date. **Apple's newer Shared Albums, created or upgraded on iOS 27, iPadOS 27 or macOS 27, require version 27 or later to open in those devices' Photos apps.** Older, non-upgraded albums can continue to work on older software. See [Apple's Shared Album upgrade requirements](https://support.apple.com/en-us/108916).
 
 HomeControl's macOS 14 minimum does not guarantee access to every Shared Album format. Before setup, confirm that the album appears in the serving Mac's Photos app and HomeControl's album picker. Access through iCloud.com alone is insufficient for HomeControl's local Photos integration.
-
-> **Vibe-coded / experimental software**
->
-> Built with substantial AI-assisted coding. This is a personal open-source spike, not a professionally audited or production-hardened product. Tests and demo checks do not guarantee correctness, privacy or security. Review the code before granting library access, start with the fictional demo, and use a trusted local network. Do not rely on it for critical reminders or expose the server to the internet. Provided **as is, without warranty**, under the MIT licence.
 
 ## What it does
 
