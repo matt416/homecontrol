@@ -100,9 +100,10 @@ export async function createServer(
       return reply.code(403).send({ error: 'Unrecognized host' });
     if (request.headers.origin && !allowedOrigins.has(request.headers.origin))
       return reply.code(403).send({ error: 'Origin not allowed' });
-    if (!request.url.startsWith('/api/')) return;
-    if (request.method === 'POST' && request.url.split('?')[0] === '/api/pair')
-      return;
+    // Match the router's canonical path so encoded URLs cannot skip authentication.
+    const routePath = request.routeOptions.url;
+    if (!routePath?.startsWith('/api/')) return;
+    if (request.method === 'POST' && routePath === '/api/pair') return;
     reply.header('Cache-Control', 'no-store');
     const supplied = Buffer.from(request.headers.authorization ?? '');
     const expected = Buffer.from(`Bearer ${config.token}`);
