@@ -21,16 +21,24 @@ An awake Mac, a running HomeControl app, granted Photos/Calendar permissions and
 bash scripts/test.sh
 ```
 
-Tests use isolated temporary settings and do not need library access. Actual Photos/Calendar permissions and selection still need manual testing. For a native demo, start the server demo and use the command in the [root README](../README.md#2-try-it-without-private-data).
+Tests use isolated temporary settings and do not need library access. Actual Photos/Calendar permissions and selection still need manual testing. For a native demo, start the server demo and use the command in the [root README](../README.md#try-the-fictional-demo).
 
 ## Optional local photo-subject helper
 
-This helper uses Apple's Vision framework to suggest crop positions. Without it, the frame uses a standard crop. From this directory:
+This helper uses Apple's Vision framework for face/human detection, with saliency detection as a fallback, to suggest photo crop positions. Both frame clients can use its subject region during Ken Burns pan-and-zoom. Without a detected subject, they use a standard centred crop; Ken Burns still works.
+
+**The normal Mac app build does not bundle or enable this helper.** It is currently an opt-in feature for the standalone development server. From this directory:
 
 ```sh
 bash subject-analyzer/build.sh
 ```
 
-It creates `subject-analyzer/build/homeframe-subject-analyzer` for Apple Silicon and Intel. Set its absolute path as `SUBJECT_ANALYZER_PATH` in `server/.env`, then restart the server. Photos are analysed locally. The helper is not required for setup.
+It creates `subject-analyzer/build/homeframe-subject-analyzer` for Apple Silicon and Intel. Follow the root [standalone server setup](../README.md#run-a-standalone-development-server), then add its absolute path to the private `server/.env`:
+
+```dotenv
+SUBJECT_ANALYZER_PATH=/absolute/path/to/homecontrol/macos/subject-analyzer/build/homeframe-subject-analyzer
+```
+
+Restart that standalone server and launch the Mac app with `HOMECONTROL_EXTERNAL_SERVER=1` to keep using it. Editing `server/.env` has no effect on the app-managed server. Analysis runs locally on exported JPEGs and is queued in the background; frames receive detected regions on later refreshes. A failed analysis falls back to the ordinary crop. The helper is not required for setup.
 
 `Assets/` contains the existing app/menu artwork and Lucide source SVGs; `Sources/HomeControl/Resources/Icons/` contains their native resources. Preserve the repository's MIT and third-party notices. Apple's system frameworks are proprietary platform dependencies and are not redistributed here.

@@ -1,5 +1,7 @@
 # Install HomeControl with an agent
 
+[Repository instructions](../AGENTS.md) · [Project overview and screenshots](../README.md)
+
 Use this guide when someone gives you this repository URL and asks you to set up a working household frame. Finish with a working system and a short handover, not just build instructions. Preserve existing installations, pairing, and signing keys during an upgrade.
 
 ## 1. Inspect the setup
@@ -44,6 +46,8 @@ Use `macos/dist/HomeControl Open Source.app`. For everyday use, copy the built b
 The packaged app starts its own server. There is no separate server terminal or Node installation required to run the built bundle. Check Settings shows **Frame server running**. The normal port is 8797; do not start a second server on that port.
 
 Walk the user through Photos and Calendar permissions using each page's empty-state button. Let the user grant OS access and choose what to share. Choose the shared album, inline calendars, calendar colours and optional names, then start sharing. Configure collection day and weather, and save those settings. Accent swatches and the native colour picker are under Settings → Frame appearance and apply to every display.
+
+Check [Shared Album compatibility](../README.md#shared-album-compatibility) before troubleshooting a missing album. Verify that the chosen album appears in both Photos on the serving Mac and HomeControl's picker; the app's minimum macOS version alone does not prove support for newer album formats.
 
 Photos/Calendar require an awake, logged-in Mac, the app running, permission grants and sharing enabled. Closing Settings keeps the app/server in the menu bar. Quitting is different: the checkbox can keep the server running, but library exports expire after ten minutes. A rebuilt ad-hoc signed Mac app may require permission again; check this after upgrading.
 

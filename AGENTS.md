@@ -1,6 +1,10 @@
-# HomeControl spike
+# HomeControl agent instructions
 
-For an installation request, a GitHub-URL handoff, first-time setup, kiosk/automatic startup, upgrades or recovery, follow [docs/AGENT-SETUP.md](docs/AGENT-SETUP.md). It defines the build order, device checks, permission handoffs and observable completion criteria. Use the package READMEs for component-specific commands.
+## Installation: start here
+
+For a GitHub-URL setup request, kiosk/automatic startup, upgrades or recovery, read and follow **[docs/AGENT-SETUP.md](docs/AGENT-SETUP.md)** before running setup commands. It defines build order, device checks, permission handoffs and completion criteria. Finish with a verified installation or an explicit account of what still requires the user/device; use package READMEs for component commands.
+
+## Repository work
 
 This repository contains a standalone macOS companion, local server, native Android frame, and browser frame. Scope is Photos, Calendar, trash collection, and configurable Weather. Keep camera and plant integrations out of this branch.
 
