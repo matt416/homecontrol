@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="org.homecontrol.frame">
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+  <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+  <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+  <application android:label="HomeControl Frame" android:icon="@drawable/homecontrol" android:hardwareAccelerated="true"
+      android:usesCleartextTraffic="true" android:allowBackup="false" android:debuggable="false" android:enableOnBackInvokedCallback="false"
+      android:theme="@style/FrameTheme">
+    <provider android:name=".UpdatePackageProvider" android:authorities="org.homecontrol.frame.updates" android:exported="false" android:grantUriPermissions="true" />
+    <activity android:name=".MainActivity" android:exported="true" android:launchMode="singleTask"
+        android:screenOrientation="sensorLandscape" android:configChanges="orientation|screenSize|keyboardHidden|keyboard">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+        <category android:name="android.intent.category.HOME" />
+        <category android:name="android.intent.category.DEFAULT" />
+      </intent-filter>
+    </activity>
+  </application>
+</manifest>

@@ -1,0 +1,33 @@
+name: Check
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: |
+            contracts/package-lock.json
+            server/package-lock.json
+            frame-web/package-lock.json
+      - name: Install and build contracts
+        run: npm ci --no-audit --no-fund && npm run build
+        working-directory: contracts
+      - name: Install server
+        run: npm ci --no-audit --no-fund
+        working-directory: server
+      - name: Install frame
+        run: npm ci --no-audit --no-fund
+        working-directory: frame-web
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - run: bash frame-android/test.sh
+      - run: bash scripts/test.sh
+      - run: bash scripts/build-app.sh

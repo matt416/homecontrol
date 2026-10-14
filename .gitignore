@@ -1,0 +1,15 @@
+.DS_Store
+.build/
+.cache/
+dist/
+node_modules/
+.env
+.env.*
+!.env.example
+data/
+*.app/
+*.log
+build/
+.local/
+*.keystore
+*.jks

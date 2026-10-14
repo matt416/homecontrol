@@ -1,0 +1,38 @@
+{
+  "name": "@homecontrol/contracts",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run --configLoader runner",
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm test && npm run build",
+    "build": "tsc -p tsconfig.build.json"
+  },
+  "dependencies": {
+    "zod": "4.6.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.5",
+    "@types/node": "24.19.2",
+    "eslint": "9.39.5",
+    "globals": "16.5.0",
+    "prettier": "3.9.10",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.71.1",
+    "vitest": "4.1.11"
+  },
+  "engines": {
+    "node": "^22.13.0 || >=24.0.0"
+  },
+  "exports": {
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "import": "./dist/*.js"
+    }
+  }
+}
